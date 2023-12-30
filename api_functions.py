@@ -320,7 +320,7 @@ def recomendacion_juego(product_id):
          # Cambio tipo bool a string, para luego procesar como texto
          df5['recommend'] = df5['recommend'].astype(str)
          # Elimino aleatoriamente filas de df5. Me quedo con el 10%, para evitar problemas con el uso de memoria.
-         df5 = df5.sample(frac = 0.1)
+         df5 = df5.sample(frac = 0.01)
          # Reseteo índice
          df5.reset_index(drop=True, inplace=True)
          # Creamos un nuevo dataframe con una única columna donde cada fila concatena los contenidos de todas las columnas que nos interesan.
