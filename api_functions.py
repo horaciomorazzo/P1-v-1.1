@@ -161,8 +161,8 @@ def UserForGenre(genero):
      cadena = str(lista)
      # Reemplazo las comillas simples por vacíos
      cadena = cadena.replace("'", "")
-     #cadena = f'{{"Usuario con más horas jugadas para Género {genero}" : {usuario}, "Horas jugadas":{cadena}}}'
-     cadena = "Usuario con más horas jugadas para Género", genero, "Horas jugadas", cadena
+     cadena = f'{{ Usuario con más horas jugadas para Género {genero}  : {usuario}, Horas jugadas : {cadena}}}'
+     #cadena = "Usuario con más horas jugadas para Género", genero, "Horas jugadas", cadena
 
      return cadena
 
