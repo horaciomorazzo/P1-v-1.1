@@ -2,7 +2,10 @@ from fastapi import FastAPI
 import api_functions as af
 import importlib
 importlib.reload(af)
+
+
 # Se instancia la aplicación
+
 app = FastAPI()
 
 # Llamada a las funciones desde FastAPI
@@ -12,12 +15,12 @@ async def PlayTimeGenre(genero:str):
     
     return af.PlayTimeGenre(genero)
 
-"""
+
 @app.get("/userforgenre/{genero}")
 async def UserForGenre(genero: str):
 
     return af.UserForGenre(genero) 
-
+"""
 @app.get("/usersrecommend/{anio}")
 async def UsersRecommend(anio: int):
 

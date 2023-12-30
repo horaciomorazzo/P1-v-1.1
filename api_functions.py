@@ -16,7 +16,13 @@ import pyarrow
 
 def PlayTimeGenre(genero):
 
-     
+     """ 
+        Devuelve el año con mas horas jugadas para el género ingresado.
+
+        Parámetro de entrada: genero (str)
+        Parámetro de salida: respuesta (str)
+
+     """
      # Empiezo a trabajar con user_items para reducir su tamaño
      df_b = pd.read_parquet('Tablas/user_items_limpio.parquet')
      # Elimino las columnas que no voy a utilizar
@@ -67,16 +73,16 @@ def PlayTimeGenre(genero):
 
          return respuesta
 
-""""
+
 def UserForGenre(genero):
      
-      
+     """ 
         Devuelve el usuario que acumula más horas jugadas para el género dado y una lista de la acumulación de horas jugadas por año.
 
         Parámetro de entrada: genero (str)
         Parámetro de salida: cadena (str)
 
-     
+     """
      
      # Leo el dataframe user_reviews_final
      df_ur1 = pd.read_parquet('Tablas/user_review_final.parquet') 
@@ -162,14 +168,14 @@ def UserForGenre(genero):
       
 def UsersRecommend(anio):
 
-     
+    """ 
         Devuelve el top 3 de juegos más recomendados por usuarios para el año dado. 
         (reviews.recommend = True y comentarios positivos/neutrales)
 
         Parámetro de entrada: anio (int)
         Parámetro de salida: resultado (str)
 
-    
+    """
 
     # Leemos el dataframe user_reviews_sa (No se eliminaron filas con recomendaciones nulas)
     df_ur1 = pd.read_parquet('Tablas/user_review_sa.parquet')
@@ -212,14 +218,14 @@ def UsersRecommend(anio):
 
 def UsersWorstDeveloper(anio):
 
-      
+     """ 
         Devuelve el top 3 de desarrolladoras con juegos menos recomendados por usuarios para el año dado. 
         (reviews.recommend = False y comentarios negativos)
         
         Parámetro de entrada: anio (int)
         Parámetro de salida: df_list (str)
 
-     
+     """
      
      # Necesito relacionar item_id con el developer. Leo el dataframe steam_output
      df1 = pd.read_parquet('Tablas/steam_games_output_limpio.parquet')
@@ -250,13 +256,13 @@ def UsersWorstDeveloper(anio):
     
 def sentiment_analysis(developer):
 
-      
+     """ 
         Según la empresa desarrolladora, se devuelve un diccionario con el nombre de la desarrolladora como llave y una lista con la cantidad total de registros de reseñas de usuarios que se encuentren categorizados con un análisis de sentimiento como valor.
         
         Parámetro de entrada: developer (str)
         Parámetro de salida: respuesta (str)
 
-     
+     """
      try:
         # Leo el dataframe auxiliar f5aux
         df = pd.read_parquet('Tablas/f5aux.parquet')
@@ -282,14 +288,14 @@ def sentiment_analysis(developer):
 def recomendacion_juego(product_id):
 
     try:
-          
+         """ 
             
             Ingresando el id de producto, se devuelve una lista con 5 juegos recomendados similares al ingresado.
             
             Parámetro de entrada: product_id (str)
             Parámetro de salida: respuesta (list)
 
-         
+         """
         
          # Lectura de datasets
          df1 = pd.read_parquet('Tablas/ml_genres.parquet')
@@ -375,4 +381,3 @@ def recomendacion_juego(product_id):
     except:
          return "Identificador de producto desconocido"
 
-"""
