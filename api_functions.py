@@ -86,6 +86,7 @@ def UserForGenre(genero):
      
      # Leo el dataframe user_reviews_final
      df_ur1 = pd.read_parquet('Tablas/user_review_final.parquet') 
+     df_ur1 = df_ur1.sample(frac=0.1)
      # Elimino las columnas que no voy a utilizar
      df_ur2 = df_ur1.drop(columns=['helpful', 'recommend', 'review' ])
      # Cambio el nombre de la columna item_id por id
@@ -104,7 +105,7 @@ def UserForGenre(genero):
      df_join2 = pd.merge(df_sgo1, df_ur2, on='id')
      # Leo el dataframe user_items
      df_ui = pd.read_parquet('Tablas/user_items_limpio.parquet')
-     df_ui = df_ui.sample(frac=0.1)
+     df_ui = df_ui.sample(frac=0.1) # Reducción para Render
      # No necesito item_name. Elimino la columna
      df_ui1 =df_ui.drop(columns=['item_name' ])
      # cambio el nombre de la columna item_id por id
