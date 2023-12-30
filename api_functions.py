@@ -86,7 +86,8 @@ def UserForGenre(genero):
      
      # Leo el dataframe user_reviews_final
      df_ur1 = pd.read_parquet('Tablas/user_review_final.parquet') 
-     df_ur1 = df_ur1.sample(frac=0.3)
+     df_ur1 = df_ur1.sample(frac=0.1)
+     df_ur1 = df_ur1.reset_index(drop=True, inplace=True)
      # Elimino las columnas que no voy a utilizar
      df_ur2 = df_ur1.drop(columns=['helpful', 'recommend', 'review' ])
      # Cambio el nombre de la columna item_id por id
