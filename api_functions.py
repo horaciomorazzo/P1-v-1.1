@@ -300,7 +300,7 @@ def recomendacion_juego(product_id):
         
          # Lectura de datasets
          df1 = pd.read_parquet('Tablas/ml_genres.parquet')
-         df2 = pd.read_parquet('Tablas/ml_reviews.parquet')
+         df2 = pd.read_parquet('Tablas/mlr_reviews.parquet')
          df4 = pd.read_parquet('Tablas/ml_title_item_id.parquet')
          # Renombro y cambio tipo de columna para que funcionen los join's
          df1.rename(columns={"id": "item_id"}, inplace=True)
@@ -316,11 +316,9 @@ def recomendacion_juego(product_id):
          # Reemplazo nulos por vacíos
          df5 = df_join.fillna('')
          # Elimino duplicados
-         df5.drop_duplicates()
+         df5.drop_duplicates(subset='review', inplace=True)
          # Cambio tipo bool a string, para luego procesar como texto
          df5['recommend'] = df5['recommend'].astype(str)
-         # Elimino aleatoriamente filas de df5. Me quedo con el 10%, para evitar problemas con el uso de memoria.
-         df5 = df5.sample(frac = 0.1)
          # Reseteo índice
          df5.reset_index(drop=True, inplace=True)
          # Creamos un nuevo dataframe con una única columna donde cada fila concatena los contenidos de todas las columnas que nos interesan.
@@ -329,7 +327,7 @@ def recomendacion_juego(product_id):
              todo.append(df5['genres'][i]+' '+df5['item_id'][i]+' '+df5['title'][i]+' '+df5['review'][i])
          df5['todo'] = todo
          # Creamos nuestro propio índice
-         df5.insert(1, "id", list(range(1, 12000)), True) 
+         df5.insert(1, "id", list(range(1, 962)), True) 
          # Agregamos el índice como primer columna del dataset
          df_new = df5[['id','todo']]
          # Eliminamos conectores (a, an, are, etc.)
