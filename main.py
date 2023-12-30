@@ -20,7 +20,7 @@ async def PlayTimeGenre(genero:str):
 async def UserForGenre(genero: str):
 
     return af.UserForGenre(genero) 
-"""
+
 @app.get("/usersrecommend/{anio}")
 async def UsersRecommend(anio: int):
 
@@ -40,4 +40,3 @@ async def sentiment_analysis(developer: str):
 async def recomendacion_juego(product_id: str):
 
     return af.recomendacion_juego(product_id)
-"""
