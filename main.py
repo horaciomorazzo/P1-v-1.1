@@ -36,6 +36,6 @@ async def sentiment_analysis(developer: str):
     return af.sentiment_analysis(developer)
 
 @app.get("/recomendacion_juego/{product_id}")
-async def sentiment_analysis(product_id: str):
+async def recomendacion_juego(product_id: str):
 
     return af.recomendacion_juego(product_id)
