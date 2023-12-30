@@ -85,7 +85,9 @@ def UserForGenre(genero):
      """
      
      # Leo el dataframe user_reviews_final
-     df_ur1 = pd.read_parquet('Tablas/user_review_final.parquet') 
+     df_ur1 = pd.read_parquet('Tablas/user_review_final.parquet')
+     # Reduzco para Render
+     df_ur1 = df_ur1.sample(frac=0.1) 
      # Elimino las columnas que no voy a utilizar
      df_ur2 = df_ur1.drop(columns=['helpful', 'recommend', 'review' ])
      # Cambio el nombre de la columna item_id por id
@@ -97,6 +99,8 @@ def UserForGenre(genero):
      df_ur2['id'] = df_ur2['id'].astype(int)
      # Leo steam_games_output
      df_sgo = pd.read_parquet('Tablas/steam_games_output_limpio.parquet')
+     # Reduzco para Render
+     df_sgo = df_sgo.sample(frac=0.1)
      # Me quedo con 'genres' e 'id'
      df_sgo1 =df_sgo.drop(columns=['title', 'developer', 'release_year' ])    
      df_sgo1['id'] = df_sgo1['id'].astype(int)
@@ -104,6 +108,8 @@ def UserForGenre(genero):
      df_join2 = pd.merge(df_sgo1, df_ur2, on='id')
      # Leo el dataframe user_items
      df_ui = pd.read_parquet('Tablas/user_items_limpio.parquet')
+     # Reduzco para Render
+     df_ui = df_ui.sample(frac=0.1)
      # No necesito item_name. Elimino la columna
      df_ui1 =df_ui.drop(columns=['item_name' ])
      # cambio el nombre de la columna item_id por id
