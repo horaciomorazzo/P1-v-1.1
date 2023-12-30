@@ -1,17 +1,14 @@
-
 from fastapi import FastAPI
-
 import api_functions as af
 import importlib
 importlib.reload(af)
-
 # Se instancia la aplicación
 app = FastAPI()
 
 # Llamada a las funciones desde FastAPI
 
 @app.get("/playtimegenre/{genero}")
-async def PlayTimeGenre(genero: str):
+async def PlayTimeGenre(genero:str):
     
     return af.PlayTimeGenre(genero)
 

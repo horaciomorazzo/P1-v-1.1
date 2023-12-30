@@ -16,13 +16,7 @@ import pyarrow
 
 def PlayTimeGenre(genero):
 
-     """ 
-        Devuelve el año con mas horas jugadas para el género ingresado.
-
-        Parámetro de entrada: genero (str)
-        Parámetro de salida: respuesta (str)
-
-     """
+     
      # Empiezo a trabajar con user_items para reducir su tamaño
      df_b = pd.read_parquet('Tablas/user_items_limpio.parquet')
      # Elimino las columnas que no voy a utilizar
